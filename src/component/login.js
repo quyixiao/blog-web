@@ -4,11 +4,16 @@ import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 import '../css/login.css'
 import UserSerivce from '../service/user'
 
+const service = new UserSerivce();
+
 export default class Login extends React.Component{
-    constructor(props){
-        super();
-        this.service = new UserSerivce();
+    render(){
+        return <_Login service={service}></_Login>
     }
+}
+
+class _Login extends React.Component{
+
     handleClick(event){
         event.preventDefault();
         console.log('----------------------')
@@ -21,8 +26,8 @@ export default class Login extends React.Component{
         let email = fm[0].value;
         let password = fm[1].value;
         console.log(email,password)
-        let ret = this.service.login(email,password)
-        
+        let ret = this.props.service.login(email,password)
+
 
     }
 
