@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
+import Login from './component/login'
 
 
 const Home = ()=>(
@@ -25,8 +26,10 @@ class Root extends React.Component{
         <div>
           <Router>
            <div>
+             <Route path="/login" component={Login}></Route>
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/about" component={About}></Route>
+               
            </div>
           </Router>
         </div>
