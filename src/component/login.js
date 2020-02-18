@@ -4,42 +4,36 @@ import {BrowserRouter as Router,Route,Link, Redirect} from "react-router-dom";
 import '../css/login.css'
 import UserSerivce from '../service/user'
 import { observer } from 'mobx-react';
+import {message} from 'antd';
+
+import 'antd/lib/message/style';
+import { inject } from '../utils';
+
+
 
 const service = new UserSerivce();
 
-export default class Login extends React.Component{
-    render(){
-        return <_Login service={service}></_Login>
-    }
-}
-
+@inject({service})
 @observer
-class _Login extends React.Component{
-    //state = {ret:0}
+export default class Login extends React.Component{
+
     handleClick(event){
         event.preventDefault();
-    
-        let fm = event.target.form
-        let email = fm[0].value;
-        let password = fm[1].value;
-        console.log(email,password)
-        this.props.service.login(email,password,this)
-        console.log('------------------login-----js ---------------')
-
+        let fm = event.target.form;
+        this.props.service.login(fm[0].value,fm[1].value);
     }
 
     render(){
-        /*console.log('-------------xxxxxxxxxxx-----------------')
-        if(this.state.ret !=0){
-            console.log(this.state.ret ,'-------------------------')
-            return <Redirect to="/about"></Redirect>
-
-        }*/
         if(this.props.service.ret ){
             console.log('observer login .........',this.props.service.ret)
+            return <Redirect to="/about"></Redirect>
         }
-      
-
+        if(this.props.service.errMsg){
+            message.info(this.props.service.errMsg,5,()=>{
+                this.props.service.errMsg = '';
+            });
+           
+        }
         return (
             <div className="login-page">
                 <div className="form">
