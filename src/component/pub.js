@@ -31,7 +31,7 @@ export default class Pub extends React.Component{
 
         let fm = event.target;
         console.log(fm[0].value)
-           this.props.service.pub(fm[0].value,fm[1].value)
+        this.props.service.pub(fm[0].value,fm[1].value)
     }
 
     render(){
