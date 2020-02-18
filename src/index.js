@@ -8,6 +8,7 @@ import 'antd/lib/menu/style'
 import 'antd/lib/icon/style'
 import 'antd/lib/layout/style'
 import Pub from './component/pub';
+import L from './component/list';
 
 const {Header,Content,Footer} = Layout;
 
@@ -48,6 +49,9 @@ class Root extends React.Component{
                       <Menu.Item key="pub">
                         <Icon type="pub" /><Link to="/pub">发布</Link>
                       </Menu.Item>
+                      <Menu.Item key="list">
+                        <Icon type="list" /><Link to="/list">列表</Link>
+                      </Menu.Item>
                       <Menu.Item key="about">
                         <Link to="/about">关于</Link>
                       </Menu.Item>
@@ -59,6 +63,7 @@ class Root extends React.Component{
                       <Route path="/login" component={Login}></Route>
                       <Route path="/reg" component={Reg}></Route>
                       <Route path="/pub" component={Pub}></Route>
+                      <Route path="/list" component={L}></Route>
                       <Route path="/about" component={About}></Route>
                   </div>
                 </Content>
