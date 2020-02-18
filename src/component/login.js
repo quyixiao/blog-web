@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {BrowserRouter as Router,Route,Link} from "react-router-dom";
+import {BrowserRouter as Router,Route,Link, Redirect} from "react-router-dom";
 import '../css/login.css'
 import UserSerivce from '../service/user'
+import { observer } from 'mobx-react';
 
 const service = new UserSerivce();
 
@@ -12,8 +13,9 @@ export default class Login extends React.Component{
     }
 }
 
+@observer
 class _Login extends React.Component{
-    state = {'ret':0}
+    //state = {ret:0}
     handleClick(event){
         event.preventDefault();
     
@@ -26,10 +28,17 @@ class _Login extends React.Component{
 
     }
 
-
     render(){
+        /*console.log('-------------xxxxxxxxxxx-----------------')
+        if(this.state.ret !=0){
+            console.log(this.state.ret ,'-------------------------')
+            return <Redirect to="/about"></Redirect>
 
-            console.log('回调完成',this.state)
+        }*/
+        if(this.props.service.ret ){
+            console.log('observer login .........',this.props.service.ret)
+        }
+      
 
         return (
             <div className="login-page">
