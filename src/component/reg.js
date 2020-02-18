@@ -20,7 +20,6 @@ class _Reg extends React.Component{
         let email = fm[0].value;
         let password = fm[1].value;
         console.log(email,password)
-
         let ret = this.props.service.login(email,password)
 
     }

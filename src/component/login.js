@@ -13,27 +13,24 @@ export default class Login extends React.Component{
 }
 
 class _Login extends React.Component{
-
+    state = {'ret':0}
     handleClick(event){
         event.preventDefault();
-        console.log('----------------------')
-        console.log(event.target)
-        console.log(event.target.form)
-        console.log(event.target.form[0])
-        console.log(event.target.form[1])
-        console.log('++++++++++++++++++++++')
+    
         let fm = event.target.form
         let email = fm[0].value;
         let password = fm[1].value;
         console.log(email,password)
-        let ret = this.props.service.login(email,password)
-
+        this.props.service.login(email,password,this)
+        console.log('------------------login-----js ---------------')
 
     }
 
 
     render(){
-        console.log('11111111111111111111111111')
+
+            console.log('回调完成',this.state)
+
         return (
             <div className="login-page">
                 <div className="form">
