@@ -17,3 +17,22 @@ console.log(d2-d1);
 
 
 
+url = '?page=1&size=20&name=小明';
+
+
+function parse_qs (search){
+    let re = /(\w+)=([^&]+)/;
+    if (search[0]=='?'){
+        search = search.substr(1);
+    }
+    ret = {};
+    search.split('&').forEach(element=>{
+        match = re.exec(element);
+        if(match){
+            ret[match[1]] = match[2];
+        }
+    });
+    return ret;
+}
+
+console.log(parse_qs(url));
