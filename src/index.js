@@ -38,19 +38,19 @@ class Root extends React.Component{
                 <Header>
                     <Menu mode="horizontal" theme="dark" >
                       <Menu.Item key="home">
-                        <Icon type="home" /><Link to="/">主页</Link>
+                        <Link to="/"><Icon type="home" />主页</Link>
                       </Menu.Item>
                       <Menu.Item key="login">
-                        <Icon type="login" /><Link to="/login">登陆</Link>
+                        <Link to="/login"><Icon type="login" />登陆</Link>
                       </Menu.Item>
                       <Menu.Item key="reg">
-                        <Icon type="reg" /><Link to="/reg">注册</Link>
+                        <Link to="/reg">注册</Link>
                       </Menu.Item>
                       <Menu.Item key="pub">
-                        <Icon type="pub" /><Link to="/pub">发布</Link>
+                        <Link to="/pub">发布</Link>
                       </Menu.Item>
                       <Menu.Item key="list">
-                        <Icon type="list" /><Link to="/list">列表</Link>
+                       <Link to="/list"> <Icon type="bars" />列表</Link>
                       </Menu.Item>
                       <Menu.Item key="about">
                         <Link to="/about">关于</Link>
