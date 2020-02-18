@@ -32,7 +32,6 @@ export default class Login extends React.Component{
             message.info(this.props.service.errMsg,5,()=>{
                 this.props.service.errMsg = '';
             });
-           
         }
         return (
             <div className="login-page">

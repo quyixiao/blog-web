@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
-import Login from './component/login'
-import Reg from './component/reg'
+import Login from './component/login';
+import Reg from './component/reg';
+import { Layout,Menu,Icon} from 'antd';
+import 'antd/lib/menu/style'
+import 'antd/lib/icon/style'
+import 'antd/lib/layout/style'
+
+const {Header,Content,Footer} = Layout;
 
 
 const Home = ()=>(
@@ -26,18 +32,35 @@ class Root extends React.Component{
       return (
         <div>
           <Router>
-           <div>
-             <ul>
-               <li><Link to="/">主页</Link> </li>
-               <li><Link to="/about">关于</Link></li>
-               <li><Link to="/login">登陆</Link></li>
-               <li><Link to="/reg">注册</Link></li>
-             </ul>
-                <Route path="/login" component={Login}></Route>
-                <Route path="/reg" component={Reg}></Route>
-                <Route exact path="/" component={Home}></Route>
-                <Route path="/about" component={About}></Route>
-           </div>
+            <Layout>
+                <Header>
+                    <Menu mode="horizontal" theme="dark" >
+                      <Menu.Item key="home">
+                        <Icon type="home" /><Link to="/">主页</Link>
+                      </Menu.Item>
+                      <Menu.Item key="login">
+                        <Icon type="login" /><Link to="/login">登陆</Link>
+                      </Menu.Item>
+                      <Menu.Item key="reg">
+                        <Icon type="reg" /><Link to="/reg">注册</Link>
+                      </Menu.Item>
+                      <Menu.Item key="about">
+                        <Link to="/about">关于</Link>
+                      </Menu.Item>
+                    </Menu>
+                </Header>
+                <Content style={{padding:'10px 50px'}}>
+                  <div style={{background:'#fff',padding:24,minHeight:280}}>
+                      <Route path="/login" component={Login}></Route>
+                      <Route path="/reg" component={Reg}></Route>
+                      <Route exact path="/" component={Home}></Route>
+                      <Route path="/about" component={About}></Route>
+                  </div>
+                </Content>
+                <Footer style={{textAlign:'center'}}>
+                  马哥教育 @ 2008
+                </Footer>
+                </Layout>
           </Router>
         </div>
       );
