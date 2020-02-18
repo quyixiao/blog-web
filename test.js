@@ -15,3 +15,5 @@ console.log(d2-d1);
 // SEssionStoreage 和LocalStoreage差不多
 // 
 
+
+
