@@ -3,12 +3,15 @@ import ReactDom from 'react-dom';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 import Login from './component/login';
 import Reg from './component/reg';
-import { Layout,Menu,Icon} from 'antd';
+import { Layout,Menu,Icon,LocaleProvider} from 'antd';
 import 'antd/lib/menu/style'
 import 'antd/lib/icon/style'
 import 'antd/lib/layout/style'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
 import Pub from './component/pub';
 import L from './component/list';
+import Post from './component/post';
+
 
 const {Header,Content,Footer} = Layout;
 
@@ -64,6 +67,7 @@ class Root extends React.Component{
                       <Route path="/reg" component={Reg}></Route>
                       <Route path="/pub" component={Pub}></Route>
                       <Route path="/list" component={L}></Route>
+                      <Route path="/post/:id" component={Post}></Route>
                       <Route path="/about" component={About}></Route>
                   </div>
                 </Content>
@@ -78,4 +82,6 @@ class Root extends React.Component{
 }
 
 
-ReactDom.render(<Root />,document.getElementById('root'))
+ReactDom.render(<LocaleProvider locale={zhCN}>
+  <Root />
+</LocaleProvider>,document.getElementById('root'))

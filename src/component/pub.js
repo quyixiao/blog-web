@@ -39,6 +39,7 @@ export default class Pub extends React.Component{
             message.info(this.props.service.errMsg,5,()=>{
                 this.props.service.errMsg = '';
             });
+            return <Redirect to="/list"></Redirect>
         }
         
         return (

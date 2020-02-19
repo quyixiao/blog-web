@@ -17,7 +17,8 @@ export default class PostService {
      @observable done = false;
      @observable errMsg = '';
      @observable posts = [];
-     @observable pagination = {page:1,size:20,pages:1,totalCount:0}
+     @observable post = {} ;
+     @observable pagination = {page:1,size:10,pages:1,totalCount:0}
 
     pub(title,content){ //header 中的token 问题
         this.instance.post('pub',{
@@ -46,6 +47,23 @@ export default class PostService {
             this.errMsg = '文章发布查询失败';
             this.posts = response.data.posts;
             this.pagination = response.data.pagination;
+
+        }).catch(
+            error=>{
+                console.log(error);
+                this.errMsg = '文章查询失败' + Math.random() * 10000;
+            }
+        );
+    }
+
+
+    getpost(id){
+        this.instance.get(id).then(response=>{
+            console.log(response);
+            console.log(response.data);
+            console.log(response.status);
+            this.errMsg = '文章发布查询失败';
+            this.post = response.data.post;
 
         }).catch(
             error=>{
